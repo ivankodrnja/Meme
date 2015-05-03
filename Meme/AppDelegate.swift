@@ -10,12 +10,38 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // declare Meme object
+    var memes = [Meme]()
+    
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        // create a new window with the size of the current window and set it as our main window
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // instantiate a new storyboard where we will create a new initial view controller
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // this will be the new initial viewcontroller
+        var targetViewController: UIViewController
+        
+        // if there are no memes initial view controller will be Meme Editor (based on StoryboardID)
+        if memes.count == 0 {
+             targetViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
+        } else {
+            // if there are memes the initial view controller will be UITabBarController (SentMemes)  (based on StoryboardID)
+             targetViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SentMemes") as! UITabBarController
+        }
+        
+        // set the newly created view controller as the window's root view controller
+        self.window?.rootViewController = targetViewController
+        // make the new wondow visible
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -40,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
