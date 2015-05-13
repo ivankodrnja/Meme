@@ -14,7 +14,7 @@
 		839DCABE1AF5E8D0004E9B9E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839DCABC1AF5E8D0004E9B9E /* LaunchScreen.xib */; };
 		839DCACA1AF5E8D0004E9B9E /* MemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DCAC91AF5E8D0004E9B9E /* MemeTests.swift */; };
 		839DCAD41AF610B6004E9B9E /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DCAD31AF610B6004E9B9E /* Meme.swift */; };
-		839DCADA1AF61EF7004E9B9E /* SentMemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DCAD91AF61EF7004E9B9E /* SentMemes.swift */; };
+		839DCADA1AF61EF7004E9B9E /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839DCAD91AF61EF7004E9B9E /* SentMemesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		839DCAC81AF5E8D0004E9B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		839DCAC91AF5E8D0004E9B9E /* MemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTests.swift; sourceTree = "<group>"; };
 		839DCAD31AF610B6004E9B9E /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
-		839DCAD91AF61EF7004E9B9E /* SentMemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemes.swift; sourceTree = "<group>"; };
+		839DCAD91AF61EF7004E9B9E /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				839DCAB31AF5E8D0004E9B9E /* AppDelegate.swift */,
 				839DCAB51AF5E8D0004E9B9E /* MemeEditorViewController.swift */,
 				839DCAD31AF610B6004E9B9E /* Meme.swift */,
-				839DCAD91AF61EF7004E9B9E /* SentMemes.swift */,
+				839DCAD91AF61EF7004E9B9E /* SentMemesTableViewController.swift */,
 				839DCAB71AF5E8D0004E9B9E /* Main.storyboard */,
 				839DCABA1AF5E8D0004E9B9E /* Images.xcassets */,
 				839DCABC1AF5E8D0004E9B9E /* LaunchScreen.xib */,
@@ -221,7 +221,7 @@
 				839DCAD41AF610B6004E9B9E /* Meme.swift in Sources */,
 				839DCAB61AF5E8D0004E9B9E /* MemeEditorViewController.swift in Sources */,
 				839DCAB41AF5E8D0004E9B9E /* AppDelegate.swift in Sources */,
-				839DCADA1AF61EF7004E9B9E /* SentMemes.swift in Sources */,
+				839DCADA1AF61EF7004E9B9E /* SentMemesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

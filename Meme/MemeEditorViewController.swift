@@ -159,8 +159,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         controller.completionWithItemsHandler = { activity, success, items, error in
             self.saveMeme()
             
-            controller.dismissViewControllerAnimated(true, completion: nil)
+            // present SentMemes View
+            self.performSegueWithIdentifier("showSentMemes", sender: self)
+            
+            // controller.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("showSentMemes", sender: self)
     }
     
     // Create a UIImage that combines the Image View and the Textfields
