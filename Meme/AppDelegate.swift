@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
+        /*
         // create a new window with the size of the current window and set it as our main window
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
@@ -29,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // this will be the new initial viewcontroller
         var targetViewController: UIViewController
         
+        // TODO: if thre are images start
         // if there are no memes initial view controller will be Meme Editor (based on StoryboardID)
         if memes.count == 0 {
              targetViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
@@ -41,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = targetViewController
         // make the new wondow visible
         self.window?.makeKeyAndVisible()
-        
+        */
         return true
     }
 

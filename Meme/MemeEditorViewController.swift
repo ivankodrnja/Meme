@@ -22,6 +22,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
+    var memes: [Meme]!
     
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -46,9 +49,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.delegate = self
         
-        // disable share button by default. It will be enabled in viewWillAppear if an image exists
+        // disable share button by default.
         shareButton.enabled = false
+        
+        
+        // disable cancel button by default. It will be enabled in saveMeme() and viewWillAppear
+        cancelButton.enabled = false
     }
+
     
     override func viewWillAppear(animated: Bool) {
         // share button will be enabled only if an image exists
@@ -60,6 +68,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardWillShowNotifications()
         self.subscribeToKeyboardWillHideNotifications()
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        memes = appDelegate.memes
+        
+        // enable cancel button if there is at least one meme
+        if(memes.count > 0){
+            cancelButton.enabled = true
+        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -160,17 +178,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             self.saveMeme()
             
             // present SentMemes View
-            self.performSegueWithIdentifier("showSentMemes", sender: self)
+            //self.performSegueWithIdentifier("showSentMemes", sender: self)
             
-            // controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     
     @IBAction func cancelAction(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("showSentMemes", sender: self)
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    
     
     // Create a UIImage that combines the Image View and the Textfields
     func generateMemedImage() -> UIImage {
@@ -199,6 +220,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        
+        // enable cancel button since there is now at least one saved meme. When ran for the first time, the it couldn't have been enabled in the viewWillAppear
+        if (appDelegate.memes.count > 0 && cancelButton.enabled == false){
+            cancelButton.enabled = true
+        }
     }
     
 }
