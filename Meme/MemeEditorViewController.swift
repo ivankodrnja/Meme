@@ -37,16 +37,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // TODO: center the text in the text field
         // define default values for the text fields
         topTextField.text = "TOP"
-        topTextField.textAlignment = .Center
         topTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = .Center
         topTextField.delegate = self
         
         bottomTextField.text = "BOTTOM"
-        bottomTextField.textAlignment = .Center
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.textAlignment = .Center
         bottomTextField.delegate = self
         
         // disable share button by default.
@@ -175,6 +174,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.presentViewController(controller, animated: true, completion: nil)
         
         controller.completionWithItemsHandler = { activity, success, items, error in
+            if (!success) {return} // return if the user taps cancel
+            
             self.saveMeme()
             
             // present SentMemes View

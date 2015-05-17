@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemesCollectionViewController: UIViewController, UICollectionViewDataSource {
+class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
 
 
 
@@ -21,6 +21,8 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+        
+        self.collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,11 +35,11 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.item]
@@ -51,8 +53,8 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDataS
         return cell
     }
     
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
+     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath:NSIndexPath)
     {
         
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
