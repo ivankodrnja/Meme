@@ -12,6 +12,8 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     
     var memes: [Meme]!
     
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
@@ -32,7 +34,9 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         if (memes.count == 0){
             presentViewController(memeEditorVC, animated: true, completion: nil)
         }
-
+        
+        // show edit button in the navigation bar on the left side
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
 
     @IBAction func addMeme(sender: AnyObject) {
@@ -47,6 +51,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.memes.count
     }
     
@@ -72,7 +77,24 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
-
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle{
+        case UITableViewCellEditingStyle.Delete:
+            // remove the deleted item from the shared model
+            let object = UIApplication.sharedApplication().delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memes.removeAtIndex(indexPath.row)
+            // remove the deleted item from the local copy of the model
+            self.memes.removeAtIndex(indexPath.row)
+            
+            // remove the deleted item from the `UITableView`
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+        default:
+            return
+        }
+    }
   
         
 }

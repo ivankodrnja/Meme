@@ -24,6 +24,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
         self.collectionView?.reloadData()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,6 +35,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         self.performSegueWithIdentifier("showAddMeme", sender: self)
         
     }
+    
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
@@ -43,13 +45,10 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.item]
-        /*
-        cell.topLabel.text = meme.topText
-        cell.bottomLabel.text = meme.bottomText
-        */
+
         let imageView = UIImageView(image: meme.memedImage)
-        cell.backgroundView = imageView
-        
+
+        cell.memeImage.image = meme.memedImage
         return cell
     }
     
@@ -60,7 +59,9 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = self.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
-        
+    
     }
+    
+
     
 }
