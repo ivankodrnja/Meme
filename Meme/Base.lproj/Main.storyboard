@@ -163,7 +163,7 @@
         <!--Sent Memes-->
         <scene sceneID="xKb-RN-cG7">
             <objects>
-                <collectionViewController title="Sent Memes" id="GZz-rC-miA" customClass="SentMemesCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="GZz-rC-miA" customClass="SentMemesCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vRg-2D-qEE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +198,7 @@
                             <outlet property="delegate" destination="GZz-rC-miA" id="QXS-gr-eGK"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="dxt-rf-c7K">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="dxt-rf-c7K">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ct-3t-5AJ">
                             <connections>
                                 <action selector="addMeme:" destination="GZz-rC-miA" id="okN-1F-IwN"/>
