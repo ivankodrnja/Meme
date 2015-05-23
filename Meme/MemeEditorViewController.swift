@@ -86,11 +86,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(notification: NSNotification){
+        
+        if bottomTextField.isFirstResponder(){
         self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func subscribeToKeyboardWillShowNotifications(){
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
     }
     
     func unsubscribeFromKeyboardWillShowNotificitaions(){
@@ -100,7 +105,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     func keyboardWillHide(notification: NSNotification){
+        
+        if bottomTextField.isFirstResponder(){
         self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     func subscribeToKeyboardWillHideNotifications(){
