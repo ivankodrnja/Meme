@@ -9,11 +9,11 @@ This is an iPhone app that enables a user to take a picture, and add text at the
 
 ## What have I learned
 
-*Access the Camera and Photo Album using the UIImagePickerController
-*Understand how Swift optionals, closures, collections, classes, structs and protocols are used in iOS apps
-*Create Actions and Outlets with extremely high proficiency
-*Use a UIActivityViewController to share media with Facebook, Twitter, SMS, and Email
-*Describe the delegate pattern and give a full account of its importance and uses in iOS classes
+* Access the Camera and Photo Album using the UIImagePickerController
+* Understand how Swift optionals, closures, collections, classes, structs and protocols are used in iOS apps
+* Create Actions and Outlets with extremely high proficiency
+* Use a UIActivityViewController to share media with Facebook, Twitter, SMS, and Email
+* Describe the delegate pattern and give a full account of its importance and uses in iOS classes
 
 
 ## License
