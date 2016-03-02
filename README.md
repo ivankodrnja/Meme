@@ -2,13 +2,14 @@
 
 Meme is Project 2 towards iOS Developer Nanodegree from https://www.udacity.com/
 
+
 ## Overview
 
 This is an iPhone app that enables a user to take a picture, and add text at the top and bottom to form a meme. The user is able to share the photo on Facebook and Twitter and also by SMS or email.
 
 
 ## What have I learned
-
+I learned how to:
 * Access the Camera and Photo Album using the UIImagePickerController
 * Understand how Swift optionals, closures, collections, classes, structs and protocols are used in iOS apps
 * Create Actions and Outlets with extremely high proficiency
