@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource {
+class SentMemesCollectionViewController: UICollectionViewController {
 
 
 
@@ -46,7 +46,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.item]
 
-        let imageView = UIImageView(image: meme.memedImage)
+        //let imageView = UIImageView(image: meme.memedImage)
 
         cell.memeImage.image = meme.memedImage
         return cell

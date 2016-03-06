@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemesTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class SentMemesTableViewController: UITableViewController {
     
     var memes: [Meme]!
     
@@ -28,7 +28,7 @@ class SentMemesTableViewController: UITableViewController, UITableViewDataSource
     override func viewDidAppear(animated: Bool) {
         
         
-        var memeEditorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let memeEditorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         
         // present MemeEditor as per the spec if there are no memes
         if (memes.count == 0){
