@@ -14,10 +14,10 @@ class SentMemesTableViewController: UITableViewController {
     
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        let object = UIApplication.sharedApplication().delegate
+        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         
@@ -25,22 +25,22 @@ class SentMemesTableViewController: UITableViewController {
     
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         
-        let memeEditorVC = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let memeEditorVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         
         // present MemeEditor as per the spec if there are no memes
         if (memes.count == 0){
-            presentViewController(memeEditorVC, animated: true, completion: nil)
+            present(memeEditorVC, animated: true, completion: nil)
         }
         
         // show edit button in the navigation bar on the left side
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
-    @IBAction func addMeme(sender: AnyObject) {
-        self.performSegueWithIdentifier("showAddMeme", sender: self)
+    @IBAction func addMeme(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "showAddMeme", sender: self)
         
     }
     
@@ -50,15 +50,15 @@ class SentMemesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.memes.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableViewCell") as! MemeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
         
         let meme = self.memes[indexPath.row]
         
@@ -70,26 +70,26 @@ class SentMemesTableViewController: UITableViewController {
         return cell
         
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = self.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle{
-        case UITableViewCellEditingStyle.Delete:
+        case UITableViewCellEditingStyle.delete:
             // remove the deleted item from the shared model
-            let object = UIApplication.sharedApplication().delegate
+            let object = UIApplication.shared.delegate
             let appDelegate = object as! AppDelegate
-            appDelegate.memes.removeAtIndex(indexPath.row)
+            appDelegate.memes.remove(at: indexPath.row)
             // remove the deleted item from the local copy of the model
-            self.memes.removeAtIndex(indexPath.row)
+            self.memes.remove(at: indexPath.row)
             
             // remove the deleted item from the `UITableView`
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             
         default:
             return
