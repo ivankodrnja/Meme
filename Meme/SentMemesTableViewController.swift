@@ -78,9 +78,9 @@ class SentMemesTableViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle{
-        case UITableViewCellEditingStyle.delete:
+        case UITableViewCell.EditingStyle.delete:
             // remove the deleted item from the shared model
             let object = UIApplication.shared.delegate
             let appDelegate = object as! AppDelegate
@@ -89,7 +89,7 @@ class SentMemesTableViewController: UITableViewController {
             self.memes.remove(at: indexPath.row)
             
             // remove the deleted item from the `UITableView`
-            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             
         default:
             return
